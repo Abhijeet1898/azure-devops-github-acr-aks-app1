@@ -17,8 +17,10 @@ variables:
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
-  Pool: Default
-  AgentName: 'W-node1'
+  pool:
+    name: Default
+    demands:
+     - agent.name -equals 'W-node1'
 
 stages:
 - stage: Build
