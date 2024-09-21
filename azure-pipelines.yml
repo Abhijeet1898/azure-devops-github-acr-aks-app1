@@ -15,12 +15,7 @@ variables:
   containerRegistry: 'acrforaksdemo1.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
-
-  # Agent VM image name
-  pool:
-    name: Default
-    demands:
-     - agent.name -equals 'W-node1'
+  vmImageName: 'W-node1'
 
 stages:
 - stage: Build
@@ -29,6 +24,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
+      name: Default
       vmImage: $(vmImageName)
     steps:
     - task: Docker@2
