@@ -28,6 +28,8 @@ stages:
     displayName: Build
     pool:
       name: Default
+      demands:
+      - Agent.Name -equals W-node1
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -51,6 +53,8 @@ stages:
     displayName: Deploy
     pool:
       name: Default
+      demands:
+      - Agent.Name -equals W-node1
     environment: 'Abhijeet1898azuredevopsgithubacraksapp1-1993.default'
     strategy:
       runOnce:
